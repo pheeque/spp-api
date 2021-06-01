@@ -1,0 +1,13 @@
+{
+    "name": "pheeque/spp-api",
+    "description": "PHP wrapper library for Service Provider Pro API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafik Abdulwahab",
+            "email": "pheeque@gmail.com"
+        }
+    ],
+    "require": {}
+}
