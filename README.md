@@ -30,3 +30,31 @@ $invoiceData = [
 ];
 $statusCode = $sppApi->createInvoice($invoiceData);
 ```
+
+#### Retrieve a single invoice
+```
+$invoice = $sppApi->getInvoice('1D3850383');
+```
+
+#### Update an invoice
+```
+$invoiceData = [
+    'email' => 'xxxx@gmail.com',
+];
+$statusCode = $sppApi->updateInvoice($invoiceData);
+```
+
+#### Charge invoice
+```
+$sppApi->chargeInvoice('1D3850383', 'pm_xxxx');
+```
+
+#### Mark invoice as paid
+```
+$sppApi->markInvoiceAsPaid('1D3850383');
+```
+
+#### Delete an invoice
+```
+$sppApi->deleteInvoice('1D3850383');
+```
