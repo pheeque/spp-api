@@ -1,7 +1,6 @@
 {
     "name": "pheeque/spp-api",
     "description": "PHP wrapper library for Service Provider Pro API",
-    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -9,5 +8,14 @@
             "email": "pheeque@gmail.com"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "Pheeque\\SPP\\": "src/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
