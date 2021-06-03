@@ -143,4 +143,91 @@ class Api {
 
         return $data;      
     }
+
+    public function createOrder(array $data)
+    {
+        $response = $this->client->request('POST', 'orders', [
+            'auth' => [$this->apiKey, ''],
+            'json' => $data,
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function getOrder($orderID)
+    {
+        $response = $this->client->request('GET', 'orders/' . $orderID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        return $data;      
+    }
+
+    public function updateOrder($orderID, array $data)
+    {
+        $response = $this->client->request('POST', 'orders/' . $orderID, [
+            'auth' => [$this->apiKey, ''],
+            'json' => $data,
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function deleteOrder($orderID)
+    {
+        $response = $this->client->request('DELETE', 'orders/' . $orderID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function getOrders(array $options = []) : array
+    {
+        $response = $this->client->request('GET', 'orders', [
+            'query' => $options,
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        return $data;      
+    }
+
+    public function createOrderMessage($orderID, $message, $user_id, $staff_only = 0)
+    {
+        $response = $this->client->request('POST', 'order_messages/' . $orderID, [
+            'auth' => [$this->apiKey, ''],
+            'json' => [
+                'order' => $orderID,
+                'message' => $message,
+                'user_id' => $user_id,
+                'staff_only' => $staff_only,
+            ],
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function deleteOrderMessage($orderID, $messageID)
+    {
+        $response = $this->client->request('DELETE', 'order_messages/' . $orderID . '/' . $messageID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function getOrderMessages($orderID) : array
+    {
+        $response = $this->client->request('GET', 'order_messages/' . $orderID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        return $data;      
+    }
 }

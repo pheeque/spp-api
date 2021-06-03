@@ -59,7 +59,6 @@ $sppApi->markInvoiceAsPaid('1D3850383');
 $sppApi->deleteInvoice('1D3850383');
 ```
 
-
 ### Clients
 
 #### Create a client
@@ -86,3 +85,44 @@ $sppApi->deleteClient($clientID);
 ```
 $sppApi->getClients($clientID);
 ```
+
+### Orders
+
+#### Create an order
+```
+$sppApi->createOrder($orderData);
+```
+
+#### Get an order
+```
+$sppApi->getOrder($orderID);
+```
+
+#### Update an order
+```
+$sppApi->updateOrder($orderData);
+```
+
+#### Delete an order
+```
+$sppApi->deleteOrder($orderID);
+```
+
+#### Get all orders
+```
+$sppApi->getOrders($orderID);
+```
+
+#### Create order message
+```
+$sppApi->createOrderMessage($orderID, $message, $userID, $staff_only);
+```
+
+#### Delete order message
+```
+$sppApi->deleteOrderMessage($orderID, $messageID);
+```
+
+#### Get all order messages
+```
+$sppApi->getOrderMessages($orderID);
