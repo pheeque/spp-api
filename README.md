@@ -6,7 +6,7 @@ Provides a wrapper around the SPP API.
 
 `composer require pheeque/spp-api`
 
-Include composer autoloader and retrieve an api instance
+Include composer autoloader and retrieve an api instance by passing in your SPP domain and your secret API key.
 
 ```
 require 'vendor/autoload.php';
