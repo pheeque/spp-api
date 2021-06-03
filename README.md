@@ -58,3 +58,31 @@ $sppApi->markInvoiceAsPaid('1D3850383');
 ```
 $sppApi->deleteInvoice('1D3850383');
 ```
+
+
+### Clients
+
+#### Create a client
+```
+$sppApi->createClient($clientData);
+```
+
+#### Get a client
+```
+$sppApi->getClient($clientID);
+```
+
+#### Update a client
+```
+$sppApi->updateClient($clientData);
+```
+
+#### Delete a client
+```
+$sppApi->deleteClient($clientID);
+```
+
+#### Get all clients
+```
+$sppApi->getClients($clientID);
+```

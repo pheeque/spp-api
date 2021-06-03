@@ -83,12 +83,64 @@ class Api {
         return $response->getStatusCode();
     }
 
-    public function deleteInvoice($invoiceID, array $data)
+    public function deleteInvoice($invoiceID)
     {
         $response = $this->client->request('DELETE', 'invoices/' . $invoiceID, [
             'auth' => [$this->apiKey, ''],
         ]);
 
         return $response->getStatusCode();
+    }
+
+    public function createClient(array $data)
+    {
+        $response = $this->client->request('POST', 'clients', [
+            'auth' => [$this->apiKey, ''],
+            'json' => $data,
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function getClient($clientID)
+    {
+        $response = $this->client->request('GET', 'clients/' . $clientID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        return $data;      
+    }
+
+    public function updateClient($clientID, array $data)
+    {
+        $response = $this->client->request('POST', 'clients/' . $clientID, [
+            'auth' => [$this->apiKey, ''],
+            'json' => $data,
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function deleteClient($clientID)
+    {
+        $response = $this->client->request('DELETE', 'clients/' . $clientID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function getClients(array $options = []) : array
+    {
+        $response = $this->client->request('GET', 'clients', [
+            'query' => $options,
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        return $data;      
     }
 }
