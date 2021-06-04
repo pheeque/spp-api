@@ -35,7 +35,7 @@ class Api {
     {
         $response = $this->client->request('POST', 'invoices', [
             'auth' => [$this->apiKey, ''],
-            'json' => $data,
+            'form_params' => $data,
         ]);
 
         return $response->getStatusCode();
@@ -56,17 +56,17 @@ class Api {
     {
         $response = $this->client->request('POST', 'invoices/' . $invoiceID, [
             'auth' => [$this->apiKey, ''],
-            'json' => $data,
+            'form_params' => $data,
         ]);
 
         return $response->getStatusCode();
     }
 
-    public function chargeInvoice($invoiceID, $paymentMethodID)
+    public function chargeInvoice($invoiceID, $paymentMethodID = null)
     {
         $response = $this->client->request('POST', 'invoices/' . $invoiceID . '/charge', [
             'auth' => [$this->apiKey, ''],
-            'json' => [
+            'form_params' => [
                 'payment_method_id' => $paymentMethodID,
             ],
         ]);
@@ -96,7 +96,7 @@ class Api {
     {
         $response = $this->client->request('POST', 'clients', [
             'auth' => [$this->apiKey, ''],
-            'json' => $data,
+            'form_params' => $data,
         ]);
 
         return $response->getStatusCode();
@@ -117,7 +117,7 @@ class Api {
     {
         $response = $this->client->request('POST', 'clients/' . $clientID, [
             'auth' => [$this->apiKey, ''],
-            'json' => $data,
+            'form_params' => $data,
         ]);
 
         return $response->getStatusCode();
@@ -148,7 +148,7 @@ class Api {
     {
         $response = $this->client->request('POST', 'orders', [
             'auth' => [$this->apiKey, ''],
-            'json' => $data,
+            'form_params' => $data,
         ]);
 
         return $response->getStatusCode();
@@ -169,7 +169,7 @@ class Api {
     {
         $response = $this->client->request('POST', 'orders/' . $orderID, [
             'auth' => [$this->apiKey, ''],
-            'json' => $data,
+            'form_params' => $data,
         ]);
 
         return $response->getStatusCode();
@@ -200,7 +200,7 @@ class Api {
     {
         $response = $this->client->request('POST', 'order_messages/' . $orderID, [
             'auth' => [$this->apiKey, ''],
-            'json' => [
+            'form_params' => [
                 'order' => $orderID,
                 'message' => $message,
                 'user_id' => $user_id,

@@ -41,7 +41,7 @@ $invoice = $sppApi->getInvoice('1D3850383');
 $invoiceData = [
     'email' => 'xxxx@gmail.com',
 ];
-$statusCode = $sppApi->updateInvoice($invoiceData);
+$statusCode = $sppApi->updateInvoice($invoiceID, $invoiceData);
 ```
 
 #### Charge invoice
@@ -73,7 +73,7 @@ $sppApi->getClient($clientID);
 
 #### Update a client
 ```
-$sppApi->updateClient($clientData);
+$sppApi->updateClient($clientID, $clientData);
 ```
 
 #### Delete a client
@@ -83,7 +83,7 @@ $sppApi->deleteClient($clientID);
 
 #### Get all clients
 ```
-$sppApi->getClients($clientID);
+$sppApi->getClients();
 ```
 
 ### Orders
@@ -100,7 +100,7 @@ $sppApi->getOrder($orderID);
 
 #### Update an order
 ```
-$sppApi->updateOrder($orderData);
+$sppApi->updateOrder($orderID, $orderData);
 ```
 
 #### Delete an order
@@ -110,7 +110,7 @@ $sppApi->deleteOrder($orderID);
 
 #### Get all orders
 ```
-$sppApi->getOrders($orderID);
+$sppApi->getOrders();
 ```
 
 #### Create order message
