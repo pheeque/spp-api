@@ -126,3 +126,37 @@ $sppApi->deleteOrderMessage($orderID, $messageID);
 #### Get all order messages
 ```
 $sppApi->getOrderMessages($orderID);
+```
+
+### Tickets
+
+#### Create a ticket
+```
+$sppApi->createTicket($ticketData);
+```
+
+#### Get a ticket
+```
+$sppApi->getTicket($ticketID);
+```
+
+#### Update a ticket
+```
+$sppApi->updateTicket($ticketData);
+```
+
+#### Delete a ticket
+```
+$sppApi->deleteTicket($ticketID);
+```
+
+#### Get all tickets
+```
+$sppApi->getTickets();
+```
+
+
+### Login Links
+```
+$sppApi->loginLink($userID);
+```

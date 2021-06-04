@@ -230,4 +230,128 @@ class Api {
 
         return $data;      
     }
+
+    public function createTicket($subject, $note, $user_id, $status = 1)
+    {
+        $response = $this->client->request('POST', 'tickets', [
+            'auth' => [$this->apiKey, ''],
+            'form_params' => [
+                'user_id' => $user_id,
+                'status' => $status,
+                'subject' => $subject,
+                'note' => $note,
+            ],
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function getTicket($ticketID)
+    {
+        $response = $this->client->request('GET', 'tickets/' . $ticketID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        return $data;      
+    }
+
+    public function updateTicket($ticketID, $subject = null, $note = null, $status = null, $employees = null, $tags = null)
+    {
+        $formParams = [];
+
+        if ($subject) {
+            $formParams['subject'] = $subject;
+        }
+
+        if ($note) {
+            $formParams['note'] = $note;
+        }
+
+        if ($status) {
+            $formParams['status'] = $status;
+        }
+
+        if ($employees) {
+            $formParams['employees'] = $employees;
+        }
+
+        if ($tags) {
+            $formParams['tags'] = $tags;
+        }
+
+        $response = $this->client->request('POST', 'tickets/' . $ticketID, [
+            'auth' => [$this->apiKey, ''],
+            'form_params' => $formParams,
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function deleteTicket($ticketID)
+    {
+        $response = $this->client->request('DELETE', 'tickets/' . $ticketID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function getTickets(array $options = []) : array
+    {
+        $response = $this->client->request('GET', 'tickets', [
+            'query' => $options,
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        return $data;      
+    }
+
+    public function createTicketMessage($ticketID, $message, $user_id, $staff_only = 0)
+    {
+        $response = $this->client->request('POST', 'ticket_messages/' . $ticketID , [
+            'auth' => [$this->apiKey, ''],
+            'form_params' => [
+                'user_id' => $user_id,
+                'staff_only' => $staff_only,
+                'message' => $message,
+            ],
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function deleteTicketMessage($ticketID, $messageID)
+    {
+        $response = $this->client->request('DELETE', 'ticket_messages/' . $ticketID . '/' . $messageID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        return $response->getStatusCode();
+    }
+
+    public function getTicketMessages($ticketID) : array
+    {
+        $response = $this->client->request('GET', 'ticket_messages/' . $ticketID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        return $data;      
+    }
+
+    public function loginLink($clientID) : string
+    {
+        $response = $this->client->request('GET', 'login_links/' . $clientID, [
+            'auth' => [$this->apiKey, ''],
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        return $data['link'];      
+    }
 }
